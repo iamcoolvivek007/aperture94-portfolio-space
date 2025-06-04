@@ -7,6 +7,10 @@ import Window from './Window';
 import AboutWindow from './windows/AboutWindow';
 import ProjectsWindow from './windows/ProjectsWindow';
 import ContactWindow from './windows/ContactWindow';
+import TerminalWindow from './windows/TerminalWindow';
+import InternetExplorerWindow from './windows/InternetExplorerWindow';
+import PaintWindow from './windows/PaintWindow';
+import SolitaireWindow from './windows/SolitaireWindow';
 
 const Windows95Desktop = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -17,14 +21,15 @@ const Windows95Desktop = () => {
     { id: 'about', name: 'About Me', icon: '👤', x: 50, y: 50 },
     { id: 'projects', name: 'Projects', icon: '📁', x: 50, y: 130 },
     { id: 'contact', name: 'Contact', icon: '📧', x: 50, y: 210 },
-    { id: 'linkedin', name: 'LinkedIn', icon: '💼', x: 150, y: 50 },
-    { id: 'github', name: 'GitHub', icon: '🐙', x: 150, y: 130 },
-    { id: 'resume', name: 'Resume', icon: '📄', x: 150, y: 210 },
+    { id: 'terminal', name: 'Terminal', icon: '📟', x: 150, y: 50 },
+    { id: 'internet-explorer', name: 'Internet Explorer', icon: '🌐', x: 150, y: 130 },
+    { id: 'paint', name: 'Paint', icon: '🎨', x: 150, y: 210 },
     { id: 'solitaire', name: 'Solitaire', icon: '🃏', x: 250, y: 50 },
-    { id: 'minesweeper', name: 'Minesweeper', icon: '💣', x: 250, y: 130 },
-    { id: 'paint', name: 'Paint', icon: '🎨', x: 250, y: 210 },
-    { id: 'music', name: 'Music', icon: '🎵', x: 350, y: 50 },
-    { id: 'recycle', name: 'Recycle Bin', icon: '🗑️', x: 350, y: 130 },
+    { id: 'linkedin', name: 'LinkedIn', icon: '💼', x: 250, y: 130 },
+    { id: 'github', name: 'GitHub', icon: '🐙', x: 250, y: 210 },
+    { id: 'resume', name: 'Resume', icon: '📄', x: 350, y: 50 },
+    { id: 'music', name: 'Music', icon: '🎵', x: 350, y: 130 },
+    { id: 'recycle', name: 'Recycle Bin', icon: '🗑️', x: 350, y: 210 },
   ];
 
   useEffect(() => {
@@ -83,6 +88,54 @@ const Windows95Desktop = () => {
             initialPosition={{ x: 300, y: 200 }}
           >
             <ContactWindow />
+          </Window>
+        );
+      case 'terminal':
+        return (
+          <Window
+            key={windowId}
+            title="Terminal - Command Prompt"
+            onClose={() => closeWindow(windowId)}
+            initialPosition={{ x: 150, y: 50 }}
+            initialSize={{ width: 600, height: 400 }}
+          >
+            <TerminalWindow />
+          </Window>
+        );
+      case 'internet-explorer':
+        return (
+          <Window
+            key={windowId}
+            title="Internet Explorer - Vivekanand's Portfolio"
+            onClose={() => closeWindow(windowId)}
+            initialPosition={{ x: 100, y: 50 }}
+            initialSize={{ width: 800, height: 600 }}
+          >
+            <InternetExplorerWindow />
+          </Window>
+        );
+      case 'paint':
+        return (
+          <Window
+            key={windowId}
+            title="Paint - Untitled"
+            onClose={() => closeWindow(windowId)}
+            initialPosition={{ x: 200, y: 100 }}
+            initialSize={{ width: 700, height: 500 }}
+          >
+            <PaintWindow />
+          </Window>
+        );
+      case 'solitaire':
+        return (
+          <Window
+            key={windowId}
+            title="Solitaire"
+            onClose={() => closeWindow(windowId)}
+            initialPosition={{ x: 150, y: 50 }}
+            initialSize={{ width: 600, height: 500 }}
+          >
+            <SolitaireWindow />
           </Window>
         );
       default:
