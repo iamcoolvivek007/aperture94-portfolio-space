@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,67 +36,206 @@
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* Windows 95 Colors */
+    --win95-silver: #c0c0c0;
+    --win95-dark-gray: #808080;
+    --win95-light-gray: #dfdfdf;
+    --win95-blue: #008080;
+    --win95-dark-blue: #000080;
+    --win95-yellow: #ffff00;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'MS Sans Serif', sans-serif;
+    font-size: 11px;
   }
+}
+
+/* Windows 95 Custom Styles */
+.win95-window {
+  background-color: var(--win95-silver);
+  border: 2px outset var(--win95-silver);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.win95-button {
+  background-color: var(--win95-silver);
+  border: 1px outset var(--win95-silver);
+  padding: 2px 8px;
+  font-size: 11px;
+  font-family: 'MS Sans Serif', sans-serif;
+  cursor: pointer;
+}
+
+.win95-button:active {
+  border: 1px inset var(--win95-silver);
+}
+
+.win95-titlebar {
+  background: linear-gradient(90deg, var(--win95-dark-blue) 0%, var(--win95-blue) 100%);
+  color: white;
+  padding: 2px 4px;
+  font-weight: bold;
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.win95-desktop {
+  background: linear-gradient(45deg, #008080 0%, #87ceeb 50%, #008080 100%);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.win95-taskbar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background-color: var(--win95-silver);
+  border-top: 1px solid var(--win95-light-gray);
+  display: flex;
+  align-items: center;
+  padding: 0 4px;
+  z-index: 1000;
+}
+
+.win95-start-button {
+  background-color: var(--win95-silver);
+  border: 1px outset var(--win95-silver);
+  padding: 4px 8px;
+  font-weight: bold;
+  font-size: 11px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.win95-start-button:active {
+  border: 1px inset var(--win95-silver);
+}
+
+.win95-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 2px;
+}
+
+.win95-icon:hover {
+  background-color: rgba(0, 0, 128, 0.2);
+}
+
+.win95-icon.selected {
+  background-color: rgba(0, 0, 128, 0.3);
+  border: 1px dotted white;
+}
+
+.win95-icon img {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 2px;
+}
+
+.win95-icon span {
+  color: white;
+  font-size: 10px;
+  text-align: center;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+  line-height: 1.2;
+}
+
+.crt-effect {
+  position: relative;
+}
+
+.crt-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.1) 2px,
+    rgba(0, 0, 0, 0.1) 4px
+  );
+  pointer-events: none;
+  z-index: 10000;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+.cursor-blink {
+  animation: blink 1s infinite;
+}
+
+.win95-splash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: black;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  font-family: 'MS Sans Serif', sans-serif;
+}
+
+.win95-splash h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ffff00;
+}
+
+.win95-splash p {
+  font-size: 16px;
+  margin-bottom: 40px;
+}
+
+.loading-bar {
+  width: 300px;
+  height: 20px;
+  border: 2px inset var(--win95-silver);
+  background-color: var(--win95-light-gray);
+  position: relative;
+  overflow: hidden;
+}
+
+.loading-progress {
+  height: 100%;
+  background: linear-gradient(90deg, var(--win95-blue) 0%, var(--win95-dark-blue) 100%);
+  transition: width 0.3s ease;
 }
