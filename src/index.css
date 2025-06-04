@@ -59,16 +59,17 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'MS Sans Serif', sans-serif;
+    font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
     font-size: 11px;
   }
 }
 
-/* Windows 95 Custom Styles */
+/* Windows 95 Authentic Styles */
 .win95-window {
   background-color: var(--win95-silver);
   border: 2px outset var(--win95-silver);
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
 }
 
 .win95-button {
@@ -76,12 +77,18 @@
   border: 1px outset var(--win95-silver);
   padding: 2px 8px;
   font-size: 11px;
-  font-family: 'MS Sans Serif', sans-serif;
+  font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
   cursor: pointer;
+  user-select: none;
+}
+
+.win95-button:hover {
+  background-color: #d4d0c8;
 }
 
 .win95-button:active {
   border: 1px inset var(--win95-silver);
+  background-color: #b8b4a8;
 }
 
 .win95-titlebar {
@@ -93,6 +100,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
 }
 
 .win95-desktop {
@@ -114,6 +122,7 @@
   align-items: center;
   padding: 0 4px;
   z-index: 1000;
+  font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
 }
 
 .win95-start-button {
@@ -126,6 +135,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
 }
 
 .win95-start-button:active {
@@ -141,6 +151,7 @@
   cursor: pointer;
   padding: 4px;
   border-radius: 2px;
+  font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
 }
 
 .win95-icon:hover {
@@ -164,8 +175,10 @@
   text-align: center;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
   line-height: 1.2;
+  font-weight: normal;
 }
 
+/* Enhanced CRT Effect */
 .crt-effect {
   position: relative;
 }
@@ -181,22 +194,57 @@
     0deg,
     transparent,
     transparent 2px,
-    rgba(0, 0, 0, 0.1) 2px,
-    rgba(0, 0, 0, 0.1) 4px
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
   );
   pointer-events: none;
   z-index: 10000;
 }
 
+.crt-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, transparent 60%, rgba(0, 0, 0, 0.1) 100%);
+  pointer-events: none;
+  z-index: 10001;
+}
+
+/* Retro Animations */
 @keyframes blink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
+}
+
+@keyframes dance {
+  0% { transform: translateY(0px) rotate(-2deg) scale(1); }
+  50% { transform: translateY(-3px) rotate(2deg) scale(1.05); }
+  100% { transform: translateY(0px) rotate(-2deg) scale(1); }
+}
+
+@keyframes bar-dance {
+  0% { transform: scaleY(1); opacity: 0.8; }
+  50% { transform: scaleY(0.3); opacity: 1; }
+  100% { transform: scaleY(1); opacity: 0.8; }
+}
+
+@keyframes retro-glow {
+  0%, 100% { text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00, 0 0 15px #00ff00; }
+  50% { text-shadow: 0 0 2px #00ff00, 0 0 5px #00ff00, 0 0 8px #00ff00; }
 }
 
 .cursor-blink {
   animation: blink 1s infinite;
 }
 
+.retro-glow {
+  animation: retro-glow 2s ease-in-out infinite;
+}
+
+/* Splash Screen Styles */
 .win95-splash {
   position: fixed;
   top: 0;
@@ -210,7 +258,7 @@
   justify-content: center;
   align-items: center;
   z-index: 10000;
-  font-family: 'MS Sans Serif', sans-serif;
+  font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
 }
 
 .win95-splash h1 {
@@ -218,6 +266,7 @@
   font-weight: bold;
   margin-bottom: 20px;
   color: #ffff00;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .win95-splash p {
@@ -238,4 +287,50 @@
   height: 100%;
   background: linear-gradient(90deg, var(--win95-blue) 0%, var(--win95-dark-blue) 100%);
   transition: width 0.3s ease;
+}
+
+/* Enhanced Inset/Outset Borders */
+.border-inset {
+  border: 2px inset #c0c0c0;
+}
+
+.border-outset {
+  border: 2px outset #c0c0c0;
+}
+
+/* Retro Input Styles */
+input[type="text"], input[type="range"], textarea {
+  border: 1px inset #c0c0c0;
+  background: white;
+  font-family: 'MS Sans Serif', 'Tahoma', sans-serif;
+  font-size: 11px;
+}
+
+input[type="text"]:focus, textarea:focus {
+  outline: 1px dotted #000080;
+  outline-offset: -1px;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #c0c0c0;
+  border: 1px inset #c0c0c0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border: 1px outset #c0c0c0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0;
+}
+
+::-webkit-scrollbar-corner {
+  background: #c0c0c0;
 }
