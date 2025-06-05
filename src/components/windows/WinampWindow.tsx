@@ -140,7 +140,7 @@ const WinampWindow = () => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes dance {
           0% { transform: translateY(0px) rotate(-5deg); }
           100% { transform: translateY(-5px) rotate(5deg); }
