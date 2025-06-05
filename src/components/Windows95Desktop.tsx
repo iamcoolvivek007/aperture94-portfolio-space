@@ -11,6 +11,7 @@ import InternetExplorerWindow from './windows/InternetExplorerWindow';
 import PaintWindow from './windows/PaintWindow';
 import SolitaireWindow from './windows/SolitaireWindow';
 import WinampWindow from './windows/WinampWindow';
+import VSCodeWindow from './windows/VSCodeWindow';
 
 const Windows95Desktop = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -24,12 +25,13 @@ const Windows95Desktop = () => {
     { id: 'terminal', name: 'MS-DOS Prompt', icon: '💻', x: 150, y: 50 },
     { id: 'internet-explorer', name: 'Internet Explorer', icon: '🌐', x: 150, y: 130 },
     { id: 'paint', name: 'Paint', icon: '🎨', x: 150, y: 210 },
-    { id: 'winamp', name: 'Winamp', icon: '🎵', x: 250, y: 50 },
-    { id: 'solitaire', name: 'Solitaire', icon: '🃏', x: 250, y: 130 },
-    { id: 'linkedin', name: 'LinkedIn', icon: '💼', x: 250, y: 210 },
-    { id: 'github', name: 'GitHub', icon: '🐙', x: 350, y: 50 },
-    { id: 'resume', name: 'Resume', icon: '📄', x: 350, y: 130 },
-    { id: 'recycle', name: 'Recycle Bin', icon: '🗑️', x: 350, y: 210 },
+    { id: 'vscode', name: 'Visual Studio Code', icon: '💙', x: 250, y: 50 },
+    { id: 'winamp', name: 'Winamp', icon: '🎵', x: 250, y: 130 },
+    { id: 'solitaire', name: 'Solitaire', icon: '🃏', x: 250, y: 210 },
+    { id: 'linkedin', name: 'LinkedIn', icon: '💼', x: 350, y: 50 },
+    { id: 'github', name: 'GitHub', icon: '🐙', x: 350, y: 130 },
+    { id: 'resume', name: 'Resume', icon: '📄', x: 350, y: 210 },
+    { id: 'recycle', name: 'Recycle Bin', icon: '🗑️', x: 450, y: 50 },
   ];
 
   useEffect(() => {
@@ -127,6 +129,18 @@ const Windows95Desktop = () => {
             initialSize={{ width: 700, height: 500 }}
           >
             <PaintWindow />
+          </Window>
+        );
+      case 'vscode':
+        return (
+          <Window
+            key={windowId}
+            title="Visual Studio Code - Portfolio Edition"
+            onClose={() => closeWindow(windowId)}
+            initialPosition={{ x: 100, y: 50 }}
+            initialSize={{ width: 900, height: 650 }}
+          >
+            <VSCodeWindow />
           </Window>
         );
       case 'winamp':
